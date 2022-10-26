@@ -1,5 +1,6 @@
+//empty array (to hold things later on)
 var cities = [];
-
+//creating variables for ID elements from the dom (html)
 var cityFormEl=document.querySelector("#city-search-form");
 var cityInputEl=document.querySelector("#city");
 var weatherContainerEl=document.querySelector("#current-weather-container");
@@ -8,13 +9,20 @@ var forecastTitle = document.querySelector("#forecast");
 var forecastContainerEl = document.querySelector("#fiveday-container");
 var pastSearchButtonEl = document.querySelector("#past-search-buttons");
 
+//creating variable = to a function
 var formSubmitHandler = function(event){
+    //if event is not handled this will prevent default
+    //https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault 
     event.preventDefault();
+    //setting variable city and giving value of what is entered in search field
     var city = cityInputEl.value.trim();
+    //if a city has a value (is true)
     if(city){
+        //(city is local variable)
         getCityWeather(city);
         get5Day(city);
         cities.unshift({city});
+        //Emptying value once search is complete  
         cityInputEl.value = "";
     } else{
         alert("Please enter a City");
@@ -24,16 +32,23 @@ var formSubmitHandler = function(event){
 }
 
 var saveSearch = function(){
+    //taking array of cities and turning into JSON Value
+    //Gets value by taking the key and giving the appropriate value
+    //JSON used when sending data from server to client
     localStorage.setItem("cities", JSON.stringify(cities));
 };
 
+//Query
 var getCityWeather = function(city){
+
     var apiKey = "ca96d6bcdba4620051bc4a7c8dae219e"
     var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
-
+    //Fetch = requesting data from API
     fetch(apiURL)
+    //Response (promise)
     .then(function(response){
         response.json().then(function(data){
+            //run displayWeather with data and city
             displayWeather(data, city);
         });
     });
@@ -165,6 +180,6 @@ var pastSearchHandler = function(event){
 }
 
 // pastSearch();
-
+//Run formSubmitHandler function upon submitting, the event call back
 cityFormEl.addEventListener("submit", formSubmitHandler);
 pastSearchButtonEl.addEventListener("click", pastSearchHandler);

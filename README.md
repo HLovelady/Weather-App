@@ -21,11 +21,11 @@ THEN I am again presented with current and future conditions for that city
 ```
 
 ## Application Screenshot
-
+![Weather Application Screenshot](./screenshot.png)
 
 ## Deployed Application
 GitHub URL: https://github.com/HLovelady/Weather-App
-Application URL:
+Application URL:https://hlovelady.github.io/Weather-App/
 
 
 ## License: GNU General Public License v3.0

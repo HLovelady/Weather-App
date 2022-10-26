@@ -24,7 +24,7 @@ THEN I am again presented with current and future conditions for that city
 
 
 ## Deployed Application
-GitHub URL:
+GitHub URL: https://github.com/HLovelady/Weather-App
 Application URL:
 
 

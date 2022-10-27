@@ -1,4 +1,3 @@
-//empty array (to hold things later on)
 var cities = [];
 //creating variables for ID elements from the dom (html)
 var cityFormEl=document.querySelector("#city-search-form");
